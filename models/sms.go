@@ -11,7 +11,7 @@ type SMSLog struct {
 	Supplier    string    `json:"supplier" gorm:"column:supplier;type:varchar(20);not null;default:'';comment:短信供应商"`
 	CountryCode string    `json:"countryCode" gorm:"column:country_code;type:varchar(10);not null;default:'0086';comment:国家编码"`
 	Phone       string    `json:"phone" gorm:"column:phone;type:varchar(20);not null;default:'';comment:电话号码"`
-	Message     string    `json:"message" gorm:"column:message:varchar(200);not null;default:'';comment:短信内容"`
+	Message     string    `json:"message" gorm:"column:message;type:varchar(200);not null;default:'';comment:短信内容"`
 	CreateTime  time.Time `json:"create_time" gorm:"autoCreateTime;comment:创建时间"`
 	UpdateTime  time.Time `json:"update_time" gorm:"autoCreateTime;comment:更新时间"`
 }
