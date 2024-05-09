@@ -6,7 +6,7 @@ import (
 )
 
 type SMSLog struct {
-	Id          int32     `json:"id" gorm:"auto_increment;primary_key;comment:'主键'"`
+	Id          int32     `json:"id" gorm:"auto_increment;primary_key;comment:主键"`
 	Type        string    `json:"type" gorm:"column:type;type:varchar(20);not null;default:'';comment:短信类型"`
 	Supplier    string    `json:"supplier" gorm:"column:supplier;type:varchar(20);not null;default:'';comment:短信供应商"`
 	CountryCode string    `json:"countryCode" gorm:"column:country_code;type:varchar(10);not null;default:'0086';comment:国家编码"`
