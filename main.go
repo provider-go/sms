@@ -1,4 +1,4 @@
-package district
+package sms
 
 import (
 	"github.com/gin-gonic/gin"
