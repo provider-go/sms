@@ -76,10 +76,9 @@ func SendCodeBySandbox(ctx *gin.Context) {
 }
 
 func LogList(ctx *gin.Context) {
-	j := make(map[string]interface{})
-	_ = ctx.BindJSON(&j)
-	pageSize := output.ParamToInt(j["pageSize"])
-	pageNum := output.ParamToInt(j["pageNum"])
+	pageSize := output.ParamToInt(ctx.Query("pageSize"))
+	pageNum := output.ParamToInt(ctx.Query("pageNum"))
+
 	list, total, err := models.ListSMSLog(pageSize, pageNum)
 
 	if err != nil {
