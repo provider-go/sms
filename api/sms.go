@@ -5,15 +5,17 @@ import (
 	"github.com/provider-go/pkg/output"
 	"github.com/provider-go/pkg/sms"
 	"github.com/provider-go/pkg/sms/typesms"
+	"github.com/provider-go/pkg/util"
 	"github.com/provider-go/sms/global"
 	"github.com/provider-go/sms/models"
+	"strconv"
 )
 
 func SendCodeByAli(ctx *gin.Context) {
 	json := make(map[string]interface{})
 	_ = ctx.BindJSON(&json)
 	phone := output.ParamToString(json["phone"])
-	code := output.ParamToString(json["code"])
+	code := strconv.Itoa(util.GeFourRandInt())
 	// 添加发送记录
 	err := models.CreateSMSLog("code", "ali", phone, code)
 	if err != nil {
@@ -61,7 +63,7 @@ func SendCodeBySandbox(ctx *gin.Context) {
 	json := make(map[string]interface{})
 	_ = ctx.BindJSON(&json)
 	phone := output.ParamToString(json["phone"])
-	code := output.ParamToString(json["code"])
+	code := "6666"
 	// 添加发送记录
 	err := models.CreateSMSLog("code", "sandbox", phone, code)
 	if err != nil {
