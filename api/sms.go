@@ -16,6 +16,9 @@ func SendCodeByAli(ctx *gin.Context) {
 	_ = ctx.BindJSON(&json)
 	phone := output.ParamToString(json["phone"])
 	code := strconv.Itoa(util.GeFourRandInt())
+	if len(phone) != 11 {
+		output.ReturnErrorResponse(ctx, 9999, "手机号格式不正确~")
+	}
 	// 添加发送记录
 	err := models.CreateSMSLog("code", "ali", phone, code)
 	if err != nil {
@@ -64,6 +67,9 @@ func SendCodeBySandbox(ctx *gin.Context) {
 	_ = ctx.BindJSON(&json)
 	phone := output.ParamToString(json["phone"])
 	code := "6666"
+	if len(phone) != 11 {
+		output.ReturnErrorResponse(ctx, 9999, "手机号格式不正确~")
+	}
 	// 添加发送记录
 	err := models.CreateSMSLog("code", "sandbox", phone, code)
 	if err != nil {
